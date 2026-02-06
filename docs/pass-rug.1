@@ -1,0 +1,84 @@
+.TH pass-rug
+
+.SH NAME
+pass-rug - A \fBpass\fP(1) extensions to manage usernames
+
+.SH SYNOPSIS
+.B pass rug 
+[
+.I COMMAND
+] [
+.I OPTIONS
+]... [
+.I ARGS
+]...
+
+.SH DESCRIPTION
+
+.B pass-rug
+extends the
+.BR pass (1)
+utility with the
+.B rug
+command for generating, displaying and copying usernames.
+
+.SH COMMANDS
+
+.TP
+\fBgenerate, -g, g\fP [ \fI-fqc\fP ]\fIpass-name\fP
+
+Generate a username for \fIpass-name\fP.
+
+If no username is present in \fIpass-name\fP, one will be appended.
+
+If \fI-f\fP is specified, overwrite a potential username without prompting.
+
+If \fI-q\fP is specified, display a QR code.
+
+If \fI-c\fP is specified, copy the username to the clipboard.
+
+.TP
+\fBshow, -s, s\fP [ \fI-qc\fP ] \fIpass-name\fP.
+
+Print the username for \fIpass-name\fP.
+
+If \fI-f\fP is specified, overwrite a potential username without prompting.
+
+If \fI-q\fP is specified, display a QR code.
+
+.SH EXAMPLES
+
+.TP
+\fBpass rug g -cf\fP \fIsteam\fP 
+Generate a username, and overwrite the one present in \fIsteam\fP
+
+.TP
+\fBpass rug s -c\fP \fIsteam\fP 
+Copy the username for \fIsteam\fP to the clipboard,
+
+.SH FILES
+.TP
+\fI/usr/share/banks/adjectives.txt\fP and \fI/usr/share/banks/nouns.txt\fP
+banks of words used to generate words.
+
+.SH ISSUES
+
+\fBpass\fP(1) will overwrite your usernames, so be sure to make an entry with \fBpass\fP first, then append a username.
+
+.SH SEE ALSO
+.BR pass (1),
+.BR qrencode (1),
+
+.SH COPYING
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
