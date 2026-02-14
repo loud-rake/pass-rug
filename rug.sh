@@ -5,7 +5,7 @@ source "$HOME/.config/pass-rug.conf" 2>/dev/null || source /etc/pass-rug/config 
 
 cmd_rug_generate(){
 	#TODO: generate a password without writing to a file, instead of dying.
-	[[ $# -eq 0 ]] && die "usage: pass rug g|generate [-cf] pass-name"
+	[[ $# -eq 0 ]] && die "Usage: pass rug g|generate [-cf] pass-name"
 	local adjective noun username flag path passfile tmp_file username_exists
 
 	read -rd '\n' -a nouns < "${nouns_bank:-/usr/share/banks/nouns.txt}"
@@ -19,10 +19,15 @@ cmd_rug_generate(){
 			case "$flag" in
 				c) clip=1;;
 				f) force=1;;
+				*) die "$flag: unknown flag.";;
 			esac
 	done
 
 	path="${@: -1}"
+	[[ "${path:0:1}" == "-" ]] && cat >&2 <<- EOF && exit 1
+	Usage: pass rug g|generate [-cf] pass-name
+	pass-name cannot begin with "-".
+	EOF
 	check_sneaky_paths "$path"
 	mkdir -p -v "$PREFIX/$(dirname -- "$path")"
 	set_gpg_recipients "$(dirname -- "$path")"
@@ -68,6 +73,7 @@ cmd_rug_show(){
 		case $flag in
 		c) clip "$username" "$path";;
 		s) echo "$username";;
+		*) die "$flag: unknown flag.";;
 		esac 
 	done
 }
