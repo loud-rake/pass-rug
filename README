@@ -1,2 +1,7 @@
-pass-rug
-an extension for pass to generate, copy and display usernames
+depends on:
+pass
+https://www.passwordstore.org/
+
+how to install:
+git clone https://github.com.loud-rake/pass-rug
+sudo ./install.sh

@@ -25,7 +25,7 @@ command for generating, displaying and copying usernames.
 .SH COMMANDS
 
 .TP
-\fBgenerate, g\fP [ \fI-fc\fP ]\fIpass-name\fP
+\fBgenerate, g\fP [ \fB-fc\fP ]\fIpass-name\fP
 
 Generate a username for \fIpass-name\fP.
 
@@ -36,22 +36,25 @@ If \fI-f\fP is specified, overwrite a potential username without prompting.
 If \fI-c\fP is specified, copy the username to the clipboard.
 
 .TP
-\fBshow, s\fP [ \fI-c\fP ] \fIpass-name\fP.
+\fBshow, s\fP [ \fB-c\fP ] \fIpass-name\fP. (default)
 
 Print the username for \fIpass-name\fP.
 
+If \fI-s\fP is specified, print the username to stdout. (default)
 If \fI-c\fP is specified, copy the username to the clipboard.
 
 .SH EXAMPLES
 
 .TP
 \fBpass rug g -cf\fP \fIsteam\fP 
-Generate a username, and overwrite the one present in \fIsteam\fP
+Generate a username, and overwrite the one present in \fIsteam\fP.
 
 .TP
-\fBpass rug s -c\fP \fIsteam\fP 
-Copy the username for \fIsteam\fP to the clipboard,
+\fBpass rug show -c\fP \fIsteam\fP 
+Copy the username for \fIsteam\fP to the clipboard.
 
+\fBpass rug \fP \fIsteam\fP 
+print the username for \fIsteam\fP to stdout.
 .SH FILES
 .TP
 \fI/usr/share/banks/adjectives.txt\fP and \fI/usr/share/banks/nouns.txt\fP
